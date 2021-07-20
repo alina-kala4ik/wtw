@@ -6,17 +6,23 @@ const settings = {
   promotionTitle: `alina`,
   promotionGenre: `alina`,
   promotionReleaseDate: `2021`,
-}
+};
+
+const films = [`Fantastic Beasts`, `Bohemian Rhapsody`, `Macbeth`];
+
+const onFilmTitleClick = () => {};
 
 const init = () => {
   ReactDOM.render(
-    <App
-      promotionTitle={settings.promotionTitle}
-      promotionGenre={settings.promotionGenre}
-      promotionReleaseDate={settings.promotionReleaseDate}
-    />,
-    document.querySelector('#root')
-  )
-}
+      <App
+        promotionTitle={settings.promotionTitle}
+        promotionGenre={settings.promotionGenre}
+        promotionReleaseDate={settings.promotionReleaseDate}
+        films={films}
+        onFilmTitleClick={onFilmTitleClick}
+      />,
+      document.querySelector(`#root`)
+  );
+};
 
 init();
