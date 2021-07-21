@@ -1,15 +1,4 @@
-
-import React from "react";
-import render from "react-test-renderer";
-import App from "./app";
-
-const settings = {
-  promotionTitle: `alina`,
-  promotionGenre: `alina`,
-  promotionReleaseDate: `2021`,
-};
-
-const films = [
+export default [
   {
     "id": 1,
     "name": `The Grand Budapest Hotel`,
@@ -87,17 +76,3 @@ const films = [
     "isFavorite": false
   },
 ];
-
-it(`render App`, () => {
-  const three = render
-    .create(
-        <App
-          promotionTitle={settings.promotionTitle}
-          promotionGenre={settings.promotionGenre}
-          promotionReleaseDate={settings.promotionReleaseDate}
-          films={films}
-        />)
-    .toJSON();
-
-  expect(three).toMatchSnapshot();
-});

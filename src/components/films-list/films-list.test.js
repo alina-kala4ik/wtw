@@ -1,13 +1,6 @@
-
 import React from "react";
 import render from "react-test-renderer";
-import App from "./app";
-
-const settings = {
-  promotionTitle: `alina`,
-  promotionGenre: `alina`,
-  promotionReleaseDate: `2021`,
-};
+import FilmsList from "./films-list";
 
 const films = [
   {
@@ -88,15 +81,13 @@ const films = [
   },
 ];
 
-it(`render App`, () => {
+it(`FilmsList render`, () => {
   const three = render
     .create(
-        <App
-          promotionTitle={settings.promotionTitle}
-          promotionGenre={settings.promotionGenre}
-          promotionReleaseDate={settings.promotionReleaseDate}
+        <FilmsList
           films={films}
-        />)
+        />
+    )
     .toJSON();
 
   expect(three).toMatchSnapshot();

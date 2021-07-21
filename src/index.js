@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./components/App/app.jsx";
+import films from "./mocks/films";
 
 const settings = {
   promotionTitle: `alina`,
@@ -8,7 +9,11 @@ const settings = {
   promotionReleaseDate: `2021`,
 };
 
-const films = [`Fantastic Beasts`, `Bohemian Rhapsody`, `Macbeth`];
+// const films = [
+//   {name: `1`},
+//   {name: `2`},
+//   {name: `3`}
+// ];
 
 const onFilmTitleClick = () => {};
 

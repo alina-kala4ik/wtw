@@ -1,8 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
+import FilmsList from "./../films-list/films-list";
 
 const Main = (props) => {
-  const {promotionTitle, promotionGenre, promotionReleaseDate, films, onFilmTitleClick} = props;
+  const {promotionTitle, promotionGenre, promotionReleaseDate, films} = props;
 
   return <React.Fragment>
     <section className="movie-card">
@@ -97,28 +98,9 @@ const Main = (props) => {
           </li>
         </ul>
 
-        <div className="catalog__movies-list">
-
-          {films.map((film) => {
-            return (
-              <article key={film} className="small-movie-card catalog__movies-card">
-                <div className="small-movie-card__image">
-                  <img src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg" alt="Fantastic Beasts: The Crimes of Grindelwald" width="280" height="175" />
-                </div>
-                <h3 className="small-movie-card__title">
-                  <a
-                    className="small-movie-card__link"
-                    href="movie-page.html"
-                    onClick={onFilmTitleClick}
-                  >
-                    {film}
-                  </a>
-                </h3>
-              </article>
-            );
-          })}
-
-        </div>
+        <FilmsList
+          films={films}
+        />
 
         <div className="catalog__more">
           <button className="catalog__button" type="button">Show more</button>
@@ -146,10 +128,25 @@ Main.propTypes = {
   promotionTitle: PropTypes.string.isRequired,
   promotionGenre: PropTypes.string.isRequired,
   promotionReleaseDate: PropTypes.string.isRequired,
-  films: PropTypes.arrayOf(
-      PropTypes.string.isRequired
-  ).isRequired,
-  onFilmTitleClick: PropTypes.func.isRequired
+  films: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+    posterImage: PropTypes.string.isRequired,
+    previewImage: PropTypes.string.isRequired,
+    backgroundImage: PropTypes.string.isRequired,
+    backgroundColor: PropTypes.string.isRequired,
+    videoLink: PropTypes.string.isRequired,
+    previewVideoLink: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    rating: PropTypes.number.isRequired,
+    scoresCount: PropTypes.number.isRequired,
+    director: PropTypes.string.isRequired,
+    starring: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+    runTime: PropTypes.number.isRequired,
+    genre: PropTypes.string.isRequired,
+    released: PropTypes.number.isRequired,
+    isFavorite: PropTypes.bool.isRequired
+  })).isRequired,
 };
 
 export default Main;
