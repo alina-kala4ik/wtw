@@ -27,20 +27,29 @@ const film = {
   "isFavorite": false
 };
 
-it(`film card hover`, () => {
+it(`film card hover and film title click`, () => {
   const handlerFilmCardHover = jest.fn();
+  const handelFilmTitleClick = jest.fn();
+  const preventDefault = jest.fn();
 
   const filmCard = Enzyme.shallow(
       <FilmCard
         film={film}
         handlerFilmCardHover={handlerFilmCardHover}
+        handelFilmTitleClick={handelFilmTitleClick}
       />
   );
 
   const filmCardBlock = filmCard.find(`.small-movie-card`);
-
   filmCardBlock.simulate(`mouseenter`);
 
   expect(handlerFilmCardHover).toHaveBeenCalledTimes(1);
   expect(handlerFilmCardHover.mock.calls[0][0]).toEqual(film.id);
+
+  const filmTitle = filmCard.find(`.small-movie-card__link`);
+  filmTitle.simulate(`click`, {preventDefault});
+
+  expect(preventDefault).toHaveBeenCalledTimes(1);
+  expect(handelFilmTitleClick).toHaveBeenCalledTimes(1);
+  expect(handelFilmTitleClick.mock.calls[0][0]).toMatchObject(film);
 });

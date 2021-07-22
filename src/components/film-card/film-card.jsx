@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const FilmCard = (props) => {
-  const {film, handlerFilmCardHover} = props;
+  const {film, handlerFilmCardHover, handelFilmTitleClick} = props;
   const {name} = film;
 
   return (
@@ -17,6 +17,10 @@ const FilmCard = (props) => {
         <a
           className="small-movie-card__link"
           href="movie-page.html"
+          onClick={(evt) => {
+            evt.preventDefault();
+            handelFilmTitleClick(film);
+          }}
         >
           {name}
         </a>
@@ -28,6 +32,7 @@ const FilmCard = (props) => {
 FilmCard.propTypes = {
   film: PropTypes.object.isRequired,
   handlerFilmCardHover: PropTypes.func.isRequired,
+  handelFilmTitleClick: PropTypes.func.isRequired
 };
 
 export default FilmCard;

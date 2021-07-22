@@ -86,6 +86,7 @@ it(`FilmsList render`, () => {
     .create(
         <FilmsList
           films={films}
+          handelFilmTitleClick={() => {}}
         />
     )
     .toJSON();

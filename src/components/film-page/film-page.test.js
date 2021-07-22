@@ -1,6 +1,6 @@
 import React from "react";
 import render from "react-test-renderer";
-import FilmCard from "./film-card";
+import FilmPage from "./film-page";
 
 const film = {
   "id": 4,
@@ -15,20 +15,18 @@ const film = {
   "rating": 8.9,
   "scoresCount": 240,
   "director": `Wes Andreson`,
-  "starring": [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`, `Saoirse Ronan`],
+  "starring": [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`],
   "runTime": 99,
   "genre": `Comedy`,
   "released": 2014,
   "isFavorite": false
 };
 
-it(`FilmCard render`, () => {
+it(`filmPage render`, () => {
   const three = render
     .create(
-        <FilmCard
+        <FilmPage
           film={film}
-          handlerFilmCardHover={() => {}}
-          handelFilmTitleClick={() => {}}
         />
     )
     .toJSON();

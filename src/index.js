@@ -4,16 +4,10 @@ import App from "./components/App/app.jsx";
 import films from "./mocks/films";
 
 const settings = {
-  promotionTitle: `alina`,
+  promotionTitle: `djndjfnkjn`,
   promotionGenre: `alina`,
   promotionReleaseDate: `2021`,
 };
-
-// const films = [
-//   {name: `1`},
-//   {name: `2`},
-//   {name: `3`}
-// ];
 
 const onFilmTitleClick = () => {};
 
