@@ -1,10 +1,10 @@
 import React from "react";
 import render from "react-test-renderer";
-import FilmCard from "./film-card";
+import VideoPlayer from "./video-player";
 
 const film = {
-  "id": 4,
-  "name": `keks`,
+  "id": 1,
+  "name": `The Grand Budapest Hotel`,
   "posterImage": `img/the-grand-budapest-hotel-poster.jpg`,
   "previewImage": `img/the-grand-budapest-hotel.jpg`,
   "backgroundImage": `img/the-grand-budapest-hotel-bg.jpg`,
@@ -22,14 +22,26 @@ const film = {
   "isFavorite": false
 };
 
-it(`FilmCard render`, () => {
+it(`render VideoPlayer in play`, () => {
   const three = render
     .create(
-        <FilmCard
-          film={film}
-          handlerFilmCardHover={() => {}}
-          handlerFilmTitleClick={() => {}}
-        />
+        <VideoPlayer
+          previewVideoLink={film.previewVideoLink}
+          previewImage={film.previewImage}
+          isPlaying={true} />
+    )
+    .toJSON();
+
+  expect(three).toMatchSnapshot();
+});
+
+it(`render VideoPlayer in pause`, () => {
+  const three = render
+    .create(
+        <VideoPlayer
+          previewVideoLink={film.previewVideoLink}
+          previewImage={film.previewImage}
+          isPlaying={false} />
     )
     .toJSON();
 

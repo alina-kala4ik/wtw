@@ -27,24 +27,18 @@ const film = {
   "isFavorite": false
 };
 
-it(`film card hover and film title click`, () => {
-  const handlerFilmCardHover = jest.fn();
+it(`film card title click`, () => {
   const handelFilmTitleClick = jest.fn();
   const preventDefault = jest.fn();
 
   const filmCard = Enzyme.shallow(
       <FilmCard
         film={film}
-        handlerFilmCardHover={handlerFilmCardHover}
-        handelFilmTitleClick={handelFilmTitleClick}
+        handlerFilmCardHover={() => {}}
+        handlerFilmTitleClick={handelFilmTitleClick}
       />
   );
 
-  const filmCardBlock = filmCard.find(`.small-movie-card`);
-  filmCardBlock.simulate(`mouseenter`);
-
-  expect(handlerFilmCardHover).toHaveBeenCalledTimes(1);
-  expect(handlerFilmCardHover.mock.calls[0][0]).toEqual(film.id);
 
   const filmTitle = filmCard.find(`.small-movie-card__link`);
   filmTitle.simulate(`click`, {preventDefault});
@@ -52,4 +46,51 @@ it(`film card hover and film title click`, () => {
   expect(preventDefault).toHaveBeenCalledTimes(1);
   expect(handelFilmTitleClick).toHaveBeenCalledTimes(1);
   expect(handelFilmTitleClick.mock.calls[0][0]).toMatchObject(film);
+});
+
+it(`change state in film card component when mouse enter on film card`, () => {
+  const expectedState = {
+    isPlaying: true
+  };
+
+  const filmCard = Enzyme.shallow(
+      <FilmCard
+        film={film}
+        handlerFilmTitleClick={() => {}}
+      />
+  );
+
+  filmCard.setState({
+    isPlaying: false
+  });
+
+  const filmCardBlock = filmCard.find(`.small-movie-card`);
+  filmCardBlock.simulate(`mouseenter`);
+
+  const filmCardState = filmCard.state();
+
+  expect(filmCardState).toMatchObject(expectedState);
+});
+
+it(`change state in film card component when mouse leave on film card`, () => {
+  const expectedState = {
+    isPlaying: false
+  };
+
+  const filmCard = Enzyme.shallow(
+      <FilmCard
+        film={film}
+        handlerFilmTitleClick={() => {}} />
+  );
+
+  filmCard.setState({
+    isPlaying: true
+  });
+
+  const filmCardBlock = filmCard.find(`.small-movie-card`);
+  filmCardBlock.simulate(`mouseleave`);
+
+  const filmCardState = filmCard.state();
+
+  expect(filmCardState).toMatchObject(expectedState);
 });

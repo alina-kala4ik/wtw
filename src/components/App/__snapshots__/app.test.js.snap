@@ -260,15 +260,16 @@ Array [
         <article
           className="small-movie-card catalog__movies-card"
           onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
         >
           <div
             className="small-movie-card__image"
           >
-            <img
-              alt="Fantastic Beasts: The Crimes of Grindelwald"
-              height="175"
-              src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
-              width="280"
+            <video
+              autoPlay={false}
+              muted={true}
+              poster="img/the-grand-budapest-hotel.jpg"
+              src="https://some-link"
             />
           </div>
           <h3
@@ -286,15 +287,16 @@ Array [
         <article
           className="small-movie-card catalog__movies-card"
           onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
         >
           <div
             className="small-movie-card__image"
           >
-            <img
-              alt="Fantastic Beasts: The Crimes of Grindelwald"
-              height="175"
-              src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
-              width="280"
+            <video
+              autoPlay={false}
+              muted={true}
+              poster="img/the-grand-budapest-hotel.jpg"
+              src="https://some-link"
             />
           </div>
           <h3
@@ -312,15 +314,16 @@ Array [
         <article
           className="small-movie-card catalog__movies-card"
           onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
         >
           <div
             className="small-movie-card__image"
           >
-            <img
-              alt="Fantastic Beasts: The Crimes of Grindelwald"
-              height="175"
-              src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
-              width="280"
+            <video
+              autoPlay={false}
+              muted={true}
+              poster="img/the-grand-budapest-hotel.jpg"
+              src="https://some-link"
             />
           </div>
           <h3
@@ -338,15 +341,16 @@ Array [
         <article
           className="small-movie-card catalog__movies-card"
           onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
         >
           <div
             className="small-movie-card__image"
           >
-            <img
-              alt="Fantastic Beasts: The Crimes of Grindelwald"
-              height="175"
-              src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
-              width="280"
+            <video
+              autoPlay={false}
+              muted={true}
+              poster="img/the-grand-budapest-hotel.jpg"
+              src="https://some-link"
             />
           </div>
           <h3

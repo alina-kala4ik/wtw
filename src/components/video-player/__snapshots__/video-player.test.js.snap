@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render VideoPlayer in pause 1`] = `
+<video
+  autoPlay={false}
+  muted={true}
+  poster="img/the-grand-budapest-hotel.jpg"
+  src="https://some-link"
+/>
+`;
+
+exports[`render VideoPlayer in play 1`] = `
+<video
+  autoPlay={false}
+  muted={true}
+  poster="img/the-grand-budapest-hotel.jpg"
+  src="https://some-link"
+/>
+`;

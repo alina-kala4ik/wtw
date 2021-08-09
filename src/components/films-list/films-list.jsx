@@ -5,14 +5,6 @@ import PropTypes from "prop-types";
 class FilmsList extends React.PureComponent {
   constructor(props) {
     super(props);
-    this.state = {
-      activeFilm: false
-    };
-    this.handlerFilmCardHover = this.handlerFilmCardHover.bind(this);
-  }
-
-  handlerFilmCardHover(filmId) {
-    this.setState({activeFilm: filmId});
   }
 
   render() {
@@ -23,8 +15,7 @@ class FilmsList extends React.PureComponent {
         return <FilmCard
           key={film.id}
           film={film}
-          handlerFilmCardHover={this.handlerFilmCardHover}
-          handelFilmTitleClick={handelFilmTitleClick}
+          handlerFilmTitleClick={handelFilmTitleClick}
         />;
       })}
     </div>;
