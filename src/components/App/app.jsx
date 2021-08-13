@@ -3,6 +3,8 @@ import Main from "./../main/main";
 import PropTypes from "prop-types";
 import {BrowserRouter, Route, Switch} from "react-router-dom";
 import FilmPage from "./../film-page/film-page";
+import {connect} from "react-redux";
+import {ActionCreator} from "../../reducer";
 
 class App extends React.PureComponent {
   constructor(props) {
@@ -10,17 +12,17 @@ class App extends React.PureComponent {
     this.state = {
       selectedFilm: null
     };
-    this.handelFilmTitleClick = this.handelFilmTitleClick.bind(this);
+    this.handlerFilmTitleClick = this.handlerFilmTitleClick.bind(this);
   }
 
-  handelFilmTitleClick(film) {
+  handlerFilmTitleClick(film) {
     this.setState({
       selectedFilm: film
     });
   }
 
   _renderApp() {
-    const {promotionTitle, promotionGenre, promotionReleaseDate, films} = this.props;
+    const {promotionTitle, promotionGenre, promotionReleaseDate, films, selectedGenre, handlerGenreClick} = this.props;
     const {selectedFilm} = this.state;
 
     if (selectedFilm === null) {
@@ -29,12 +31,16 @@ class App extends React.PureComponent {
         promotionGenre={promotionGenre}
         promotionReleaseDate={promotionReleaseDate}
         films={films}
-        handelFilmTitleClick={this.handelFilmTitleClick}
+        handlerFilmTitleClick={this.handlerFilmTitleClick}
+        selectedGenre={selectedGenre}
+        handlerGenreClick={handlerGenreClick}
       />;
     }
 
     return <FilmPage
       film={selectedFilm}
+      films={films}
+      handlerFilmTitleClick={this.handlerFilmTitleClick}
     />;
   }
 
@@ -49,6 +55,8 @@ class App extends React.PureComponent {
         <Route exact path="/film-page">
           <FilmPage
             film={films[3]}
+            films={films}
+            handlerFilmTitleClick={this.handlerFilmTitleClick}
           />
         </Route>
       </Switch>
@@ -60,25 +68,20 @@ App.propTypes = {
   promotionTitle: PropTypes.string.isRequired,
   promotionGenre: PropTypes.string.isRequired,
   promotionReleaseDate: PropTypes.string.isRequired,
-  films: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    name: PropTypes.string.isRequired,
-    posterImage: PropTypes.string.isRequired,
-    previewImage: PropTypes.string.isRequired,
-    backgroundImage: PropTypes.string.isRequired,
-    backgroundColor: PropTypes.string.isRequired,
-    videoLink: PropTypes.string.isRequired,
-    previewVideoLink: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
-    rating: PropTypes.number.isRequired,
-    scoresCount: PropTypes.number.isRequired,
-    director: PropTypes.string.isRequired,
-    starring: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-    runTime: PropTypes.number.isRequired,
-    genre: PropTypes.string.isRequired,
-    released: PropTypes.number.isRequired,
-    isFavorite: PropTypes.bool.isRequired
-  })).isRequired,
+  films: PropTypes.array.isRequired,
+  selectedGenre: PropTypes.string.isRequired,
+  handlerGenreClick: PropTypes.func.isRequired,
 };
 
-export default App;
+const mapStateToProps = (state) => ({
+  selectedGenre: state.genre
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  handlerGenreClick(genre) {
+    dispatch(ActionCreator.changeGenre(genre));
+  }
+});
+
+export {App};
+export default connect(mapStateToProps, mapDispatchToProps)(App);
