@@ -3,10 +3,13 @@ import PropTypes from "prop-types";
 import FilmsList from "./../films-list/films-list";
 import GenresList from "../genres-list/genres_list";
 import ShowMoreButton from "../show-more-button/show-more-button";
+import {getFilteredFilmsByGenre} from "../../reducer";
 
 const Main = (props) => {
   const {promotionTitle, promotionGenre, promotionReleaseDate, films, handlerFilmTitleClick, selectedGenre, handlerGenreClick, visibleCountOfFilms, handlerShowMoreClick} = props;
-  const filmsCount = films.length;
+
+  const filteredFilmsCount = getFilteredFilmsByGenre(selectedGenre).length;
+  const isShowedShowMoreButton = filteredFilmsCount > visibleCountOfFilms;
 
   return <React.Fragment>
     <section className="movie-card">
@@ -81,7 +84,7 @@ const Main = (props) => {
           count={visibleCountOfFilms}
         />
 
-        {filmsCount > visibleCountOfFilms &&
+        {isShowedShowMoreButton &&
           <ShowMoreButton
             handlerShowMoreClick={handlerShowMoreClick}
           />

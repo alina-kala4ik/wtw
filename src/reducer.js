@@ -1,8 +1,17 @@
+import films from "./mocks/films";
+
 const VISIBLE_COUNT_OF_FILMS = 8;
+
+const getFilteredFilmsByGenre = (genre) => {
+  if (genre === `All genres`) {
+    return initialState.allFilms;
+  }
+  return initialState.allFilms.filter((film) => film.genre === genre);
+};
 
 const initialState = {
   genre: `All genres`,
-  allFilms: [],
+  allFilms: films,
   visibleCountOfFilms: VISIBLE_COUNT_OF_FILMS,
 };
 
@@ -34,4 +43,4 @@ const reducer = (state = initialState, action) => {
   return state;
 };
 
-export {reducer, ActionCreator, ActionTypes};
+export {reducer, ActionCreator, ActionTypes, getFilteredFilmsByGenre};

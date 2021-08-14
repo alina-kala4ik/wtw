@@ -1,6 +1,10 @@
 import React from "react";
 import render from "react-test-renderer";
 import Main from "./main";
+import configureStore from "redux-mock-store";
+import {Provider} from "react-redux";
+
+const mockStore = configureStore([]);
 
 const settings = {
   promotionTitle: `alina`,
@@ -88,19 +92,27 @@ const films = [
 ];
 
 it(`render Main without showMore button`, () => {
+  const store = mockStore({
+    genre: `All genres`,
+    allFilms: films,
+    visibleCountOfFilms: 8,
+  });
+
   const three = render
     .create(
-        <Main
-          promotionTitle={settings.promotionTitle}
-          promotionGenre={settings.promotionGenre}
-          promotionReleaseDate={settings.promotionReleaseDate}
-          films={films}
-          handlerFilmTitleClick={() => {}}
-          selectedGenre={`All genres`}
-          handlerGenreClick={() => {}}
-          visibleCountOfFilms={8}
-          handlerShowMoreClick={() => {}}
-        />
+        <Provider store={store}>
+          <Main
+            promotionTitle={settings.promotionTitle}
+            promotionGenre={settings.promotionGenre}
+            promotionReleaseDate={settings.promotionReleaseDate}
+            films={films}
+            handlerFilmTitleClick={() => {}}
+            selectedGenre={`All genres`}
+            handlerGenreClick={() => {}}
+            visibleCountOfFilms={8}
+            handlerShowMoreClick={() => {}}
+          />
+        </Provider>
     )
     .toJSON();
 
@@ -108,19 +120,27 @@ it(`render Main without showMore button`, () => {
 });
 
 it(`render Main with showMore button`, () => {
+  const store = mockStore({
+    genre: `All genres`,
+    allFilms: films,
+    visibleCountOfFilms: 2,
+  });
+
   const three = render
     .create(
-        <Main
-          promotionTitle={settings.promotionTitle}
-          promotionGenre={settings.promotionGenre}
-          promotionReleaseDate={settings.promotionReleaseDate}
-          films={films}
-          handlerFilmTitleClick={() => {}}
-          selectedGenre={`All genres`}
-          handlerGenreClick={() => {}}
-          visibleCountOfFilms={2}
-          handlerShowMoreClick={() => {}}
-        />
+        <Provider store={store}>
+          <Main
+            promotionTitle={settings.promotionTitle}
+            promotionGenre={settings.promotionGenre}
+            promotionReleaseDate={settings.promotionReleaseDate}
+            films={films}
+            handlerFilmTitleClick={() => {}}
+            selectedGenre={`All genres`}
+            handlerGenreClick={() => {}}
+            visibleCountOfFilms={2}
+            handlerShowMoreClick={() => {}}
+          />
+        </Provider>
     )
     .toJSON();
 

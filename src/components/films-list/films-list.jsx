@@ -1,28 +1,15 @@
 import React from "react";
 import FilmCard from "./../film-card/film-card";
 import PropTypes from "prop-types";
-
-const filteringFilmsByGenre = (films, genre, count) => {
-  let filteredFilms = null;
-  if (genre === `All genres`) {
-    filteredFilms = films;
-  } else {
-    filteredFilms = films.filter((film) => film.genre === genre);
-  }
-
-  if (count) {
-    return filteredFilms.slice(0, count);
-  }
-  return filteredFilms;
-};
+import {connect} from "react-redux";
+import {getFilteredFilmsByGenre} from "./../../reducer";
 
 const FilmsList = (props) => {
-  const {films, handlerFilmTitleClick, genre = `All genres`, count = null} = props;
-  const filteredFilms = filteringFilmsByGenre(films, genre, count);
+  const {films, handlerFilmTitleClick} = props;
 
   return (
     <div className="catalog__movies-list">
-      {filteredFilms.map((film) => {
+      {films.map((film) => {
         return <FilmCard
           key={film.id}
           film={film}
@@ -40,4 +27,21 @@ FilmsList.propTypes = {
   count: PropTypes.number
 };
 
-export default FilmsList;
+const mapStateToProps = (state, props) => {
+  const {genre = `All genres`, count = null} = props;
+
+  let films = state.allFilms;
+
+  if (genre !== `All genres`) {
+    films = getFilteredFilmsByGenre(genre);
+  }
+
+  const showedFilms = films.slice(0, count);
+
+  return {
+    films: showedFilms
+  };
+};
+
+export {FilmsList};
+export default connect(mapStateToProps)(FilmsList);

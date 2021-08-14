@@ -1,10 +1,11 @@
 import {reducer, ActionTypes} from "./reducer";
+import films from "./mocks/films";
 
 it(`return initial state`, function () {
   const foo = reducer(undefined, {});
   expect(foo).toMatchObject({
     genre: `All genres`,
-    allFilms: [],
+    allFilms: films,
   });
 });
 
@@ -15,6 +16,6 @@ it(`change genre`, function () {
   });
   expect(foo).toMatchObject({
     genre: `Drama`,
-    allFilms: [],
+    allFilms: films,
   });
 });

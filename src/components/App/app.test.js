@@ -1,6 +1,8 @@
 
 import React from "react";
 import render from "react-test-renderer";
+import configureStore from "redux-mock-store";
+import {Provider} from "react-redux";
 import {App} from "./app";
 
 const settings = {
@@ -88,19 +90,29 @@ const films = [
   },
 ];
 
+const mockStore = configureStore([]);
+
 it(`render App`, () => {
+  const store = mockStore({
+    genre: `All genres`,
+    allFilms: films,
+    visibleCountOfFilms: 8,
+  });
+
   const three = render
     .create(
-        <App
-          promotionTitle={settings.promotionTitle}
-          promotionGenre={settings.promotionGenre}
-          promotionReleaseDate={settings.promotionReleaseDate}
-          films={films}
-          selectedGenre={`All genres`}
-          handlerGenreClick={() => {}}
-          visibleCountOfFilms={8}
-          handlerShowMoreClick={() => {}}
-        />
+        <Provider store={store}>
+          <App
+            promotionTitle={settings.promotionTitle}
+            promotionGenre={settings.promotionGenre}
+            promotionReleaseDate={settings.promotionReleaseDate}
+            films={films}
+            selectedGenre={`All genres`}
+            handlerGenreClick={() => {}}
+            visibleCountOfFilms={8}
+            handlerShowMoreClick={() => {}}
+          />
+        </Provider>
     )
     .toJSON();
 

@@ -1,6 +1,8 @@
 import React from "react";
 import render from "react-test-renderer";
 import FilmPage from "./film-page";
+import {Provider} from "react-redux";
+import configureStore from "redux-mock-store";
 
 const films = [
   {
@@ -81,15 +83,24 @@ const films = [
   },
 ];
 
+const mockStore = configureStore([]);
 
 it(`filmPage render`, () => {
+  const store = mockStore({
+    genre: `All genres`,
+    allFilms: films,
+    visibleCountOfFilms: 8,
+  });
+
   const three = render
     .create(
-        <FilmPage
-          film={films[1]}
-          films={films}
-          handlerFilmTitleClick={() => {}}
-        />
+        <Provider store={store}>
+          <FilmPage
+            film={films[1]}
+            films={films}
+            handlerFilmTitleClick={() => {}}
+          />
+        </Provider>
     )
     .toJSON();
 

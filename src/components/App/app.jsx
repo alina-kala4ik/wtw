@@ -80,6 +80,7 @@ App.propTypes = {
 const mapStateToProps = (state) => ({
   selectedGenre: state.genre,
   visibleCountOfFilms: state.visibleCountOfFilms,
+  films: state.allFilms
 });
 
 const mapDispatchToProps = (dispatch) => ({

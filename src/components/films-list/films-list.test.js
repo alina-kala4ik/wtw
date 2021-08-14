@@ -1,6 +1,6 @@
 import React from "react";
 import render from "react-test-renderer";
-import FilmsList from "./films-list";
+import {FilmsList} from "./films-list";
 
 const films = [
   {
