@@ -2,9 +2,11 @@ import React from "react";
 import PropTypes from "prop-types";
 import FilmsList from "./../films-list/films-list";
 import GenresList from "../genres-list/genres_list";
+import ShowMoreButton from "../show-more-button/show-more-button";
 
 const Main = (props) => {
-  const {promotionTitle, promotionGenre, promotionReleaseDate, films, handlerFilmTitleClick, selectedGenre, handlerGenreClick} = props;
+  const {promotionTitle, promotionGenre, promotionReleaseDate, films, handlerFilmTitleClick, selectedGenre, handlerGenreClick, visibleCountOfFilms, handlerShowMoreClick} = props;
+  const filmsCount = films.length;
 
   return <React.Fragment>
     <section className="movie-card">
@@ -76,11 +78,14 @@ const Main = (props) => {
           films={films}
           handlerFilmTitleClick={handlerFilmTitleClick}
           genre={selectedGenre}
+          count={visibleCountOfFilms}
         />
 
-        <div className="catalog__more">
-          <button className="catalog__button" type="button">Show more</button>
-        </div>
+        {filmsCount > visibleCountOfFilms &&
+          <ShowMoreButton
+            handlerShowMoreClick={handlerShowMoreClick}
+          />
+        }
       </section>
 
       <footer className="page-footer">
@@ -108,6 +113,8 @@ Main.propTypes = {
   handlerFilmTitleClick: PropTypes.func.isRequired,
   selectedGenre: PropTypes.string.isRequired,
   handlerGenreClick: PropTypes.func.isRequired,
+  visibleCountOfFilms: PropTypes.number.isRequired,
+  handlerShowMoreClick: PropTypes.func.isRequired,
 };
 
 export default Main;

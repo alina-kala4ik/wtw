@@ -88,6 +88,7 @@ it(`FilmsList render`, () => {
           films={films}
           handlerFilmTitleClick={() => {}}
           genre={`All genres`}
+          count={8}
         />
     )
     .toJSON();

@@ -87,7 +87,7 @@ const films = [
   },
 ];
 
-it(`render Main`, () => {
+it(`render Main without showMore button`, () => {
   const three = render
     .create(
         <Main
@@ -98,6 +98,28 @@ it(`render Main`, () => {
           handlerFilmTitleClick={() => {}}
           selectedGenre={`All genres`}
           handlerGenreClick={() => {}}
+          visibleCountOfFilms={8}
+          handlerShowMoreClick={() => {}}
+        />
+    )
+    .toJSON();
+
+  expect(three).toMatchSnapshot();
+});
+
+it(`render Main with showMore button`, () => {
+  const three = render
+    .create(
+        <Main
+          promotionTitle={settings.promotionTitle}
+          promotionGenre={settings.promotionGenre}
+          promotionReleaseDate={settings.promotionReleaseDate}
+          films={films}
+          handlerFilmTitleClick={() => {}}
+          selectedGenre={`All genres`}
+          handlerGenreClick={() => {}}
+          visibleCountOfFilms={2}
+          handlerShowMoreClick={() => {}}
         />
     )
     .toJSON();

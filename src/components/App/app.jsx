@@ -22,7 +22,7 @@ class App extends React.PureComponent {
   }
 
   _renderApp() {
-    const {promotionTitle, promotionGenre, promotionReleaseDate, films, selectedGenre, handlerGenreClick} = this.props;
+    const {promotionTitle, promotionGenre, promotionReleaseDate, films, selectedGenre, handlerGenreClick, visibleCountOfFilms, handlerShowMoreClick} = this.props;
     const {selectedFilm} = this.state;
 
     if (selectedFilm === null) {
@@ -34,6 +34,8 @@ class App extends React.PureComponent {
         handlerFilmTitleClick={this.handlerFilmTitleClick}
         selectedGenre={selectedGenre}
         handlerGenreClick={handlerGenreClick}
+        visibleCountOfFilms={visibleCountOfFilms}
+        handlerShowMoreClick={handlerShowMoreClick}
       />;
     }
 
@@ -71,15 +73,21 @@ App.propTypes = {
   films: PropTypes.array.isRequired,
   selectedGenre: PropTypes.string.isRequired,
   handlerGenreClick: PropTypes.func.isRequired,
+  visibleCountOfFilms: PropTypes.number.isRequired,
+  handlerShowMoreClick: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => ({
-  selectedGenre: state.genre
+  selectedGenre: state.genre,
+  visibleCountOfFilms: state.visibleCountOfFilms,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   handlerGenreClick(genre) {
     dispatch(ActionCreator.changeGenre(genre));
+  },
+  handlerShowMoreClick() {
+    dispatch(ActionCreator.showMoreFilms());
   }
 });
 

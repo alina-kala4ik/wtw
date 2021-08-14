@@ -3,10 +3,12 @@ import FilmCard from "./../film-card/film-card";
 import PropTypes from "prop-types";
 
 const filteringFilmsByGenre = (films, genre, count) => {
+  let filteredFilms = null;
   if (genre === `All genres`) {
-    return films;
+    filteredFilms = films;
+  } else {
+    filteredFilms = films.filter((film) => film.genre === genre);
   }
-  const filteredFilms = films.filter((film) => film.genre === genre);
 
   if (count) {
     return filteredFilms.slice(0, count);

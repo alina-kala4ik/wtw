@@ -98,6 +98,8 @@ it(`render App`, () => {
           films={films}
           selectedGenre={`All genres`}
           handlerGenreClick={() => {}}
+          visibleCountOfFilms={8}
+          handlerShowMoreClick={() => {}}
         />
     )
     .toJSON();
