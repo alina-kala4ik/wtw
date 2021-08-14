@@ -2,29 +2,40 @@ import React from "react";
 import FilmCard from "./../film-card/film-card";
 import PropTypes from "prop-types";
 
-class FilmsList extends React.PureComponent {
-  constructor(props) {
-    super(props);
+const filteringFilmsByGenre = (films, genre, count) => {
+  if (genre === `All genres`) {
+    return films;
   }
+  const filteredFilms = films.filter((film) => film.genre === genre);
 
-  render() {
-    const {films, handelFilmTitleClick} = this.props;
+  if (count) {
+    return filteredFilms.slice(0, count);
+  }
+  return filteredFilms;
+};
 
-    return <div className="catalog__movies-list">
-      {films.map((film) => {
+const FilmsList = (props) => {
+  const {films, handlerFilmTitleClick, genre = `All genres`, count = null} = props;
+  const filteredFilms = filteringFilmsByGenre(films, genre, count);
+
+  return (
+    <div className="catalog__movies-list">
+      {filteredFilms.map((film) => {
         return <FilmCard
           key={film.id}
           film={film}
-          handlerFilmTitleClick={handelFilmTitleClick}
+          handlerFilmTitleClick={handlerFilmTitleClick}
         />;
       })}
-    </div>;
-  }
-}
+    </div>
+  );
+};
 
 FilmsList.propTypes = {
   films: PropTypes.array.isRequired,
-  handelFilmTitleClick: PropTypes.func.isRequired
+  handlerFilmTitleClick: PropTypes.func.isRequired,
+  genre: PropTypes.string.isRequired,
+  count: PropTypes.number
 };
 
 export default FilmsList;

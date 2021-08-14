@@ -1,7 +1,7 @@
 
 import React from "react";
 import render from "react-test-renderer";
-import App from "./app";
+import {App} from "./app";
 
 const settings = {
   promotionTitle: `alina`,
@@ -96,7 +96,10 @@ it(`render App`, () => {
           promotionGenre={settings.promotionGenre}
           promotionReleaseDate={settings.promotionReleaseDate}
           films={films}
-        />)
+          selectedGenre={`All genres`}
+          handlerGenreClick={() => {}}
+        />
+    )
     .toJSON();
 
   expect(three).toMatchSnapshot();

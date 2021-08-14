@@ -1,7 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import {createStore} from "redux";
+import {Provider} from "react-redux";
 import App from "./components/App/app.jsx";
 import films from "./mocks/films";
+import {reducer} from "./reducer";
 
 const settings = {
   promotionTitle: `djndjfnkjn`,
@@ -9,17 +12,18 @@ const settings = {
   promotionReleaseDate: `2021`,
 };
 
-const onFilmTitleClick = () => {};
+const store = createStore(reducer);
 
 const init = () => {
   ReactDOM.render(
-      <App
-        promotionTitle={settings.promotionTitle}
-        promotionGenre={settings.promotionGenre}
-        promotionReleaseDate={settings.promotionReleaseDate}
-        films={films}
-        onFilmTitleClick={onFilmTitleClick}
-      />,
+      <Provider store={store}>
+        <App
+          promotionTitle={settings.promotionTitle}
+          promotionGenre={settings.promotionGenre}
+          promotionReleaseDate={settings.promotionReleaseDate}
+          films={films}
+        />
+      </Provider>,
       document.querySelector(`#root`)
   );
 };

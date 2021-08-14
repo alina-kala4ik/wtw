@@ -5,13 +5,9 @@ import FilmsList from "../films-list/films-list";
 
 const FILMS_LIKE_THIS_DISPLAYEN_COUNT = 4;
 
-const getFilmsLikeThis = (films, thisFilm) => {
-  return films.filter((film) => film.genre === thisFilm.genre).slice(0, FILMS_LIKE_THIS_DISPLAYEN_COUNT);
-};
-
 const FilmPage = (props) => {
   const {film, films, handlerFilmTitleClick} = props;
-  const filmsLikeThis = getFilmsLikeThis(films, film);
+  const {genre} = film;
 
   return (
     <React.Fragment>
@@ -87,8 +83,10 @@ const FilmPage = (props) => {
           <div className="catalog__movies-list">
 
             <FilmsList
-              films={filmsLikeThis}
+              films={films}
               handlerFilmTitleClick={handlerFilmTitleClick}
+              genre={genre}
+              count={FILMS_LIKE_THIS_DISPLAYEN_COUNT}
             >
             </FilmsList>
 

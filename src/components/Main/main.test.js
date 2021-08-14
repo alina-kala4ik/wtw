@@ -95,7 +95,9 @@ it(`render Main`, () => {
           promotionGenre={settings.promotionGenre}
           promotionReleaseDate={settings.promotionReleaseDate}
           films={films}
-          handelFilmTitleClick={() => {}}
+          handlerFilmTitleClick={() => {}}
+          selectedGenre={`All genres`}
+          handlerGenreClick={() => {}}
         />
     )
     .toJSON();

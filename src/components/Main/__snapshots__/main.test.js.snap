@@ -158,99 +158,19 @@ Array [
         >
           <a
             className="catalog__genres-link"
-            href="#"
+            onClick={[Function]}
           >
             All genres
           </a>
         </li>
         <li
-          className="catalog__genres-item"
+          className="catalog__genres-item "
         >
           <a
             className="catalog__genres-link"
-            href="#"
+            onClick={[Function]}
           >
-            Comedies
-          </a>
-        </li>
-        <li
-          className="catalog__genres-item"
-        >
-          <a
-            className="catalog__genres-link"
-            href="#"
-          >
-            Crime
-          </a>
-        </li>
-        <li
-          className="catalog__genres-item"
-        >
-          <a
-            className="catalog__genres-link"
-            href="#"
-          >
-            Documentary
-          </a>
-        </li>
-        <li
-          className="catalog__genres-item"
-        >
-          <a
-            className="catalog__genres-link"
-            href="#"
-          >
-            Dramas
-          </a>
-        </li>
-        <li
-          className="catalog__genres-item"
-        >
-          <a
-            className="catalog__genres-link"
-            href="#"
-          >
-            Horror
-          </a>
-        </li>
-        <li
-          className="catalog__genres-item"
-        >
-          <a
-            className="catalog__genres-link"
-            href="#"
-          >
-            Kids & Family
-          </a>
-        </li>
-        <li
-          className="catalog__genres-item"
-        >
-          <a
-            className="catalog__genres-link"
-            href="#"
-          >
-            Romance
-          </a>
-        </li>
-        <li
-          className="catalog__genres-item"
-        >
-          <a
-            className="catalog__genres-link"
-            href="#"
-          >
-            Sci-Fi
-          </a>
-        </li>
-        <li
-          className="catalog__genres-item"
-        >
-          <a
-            className="catalog__genres-link"
-            href="#"
-          >
-            Thrillers
+            Comedy
           </a>
         </li>
       </ul>
@@ -277,7 +197,6 @@ Array [
           >
             <a
               className="small-movie-card__link"
-              href="movie-page.html"
               onClick={[Function]}
             >
               The Grand Budapest Hotel
@@ -304,7 +223,6 @@ Array [
           >
             <a
               className="small-movie-card__link"
-              href="movie-page.html"
               onClick={[Function]}
             >
               Fantastic Beasts: The Crimes of Grindelwald
@@ -331,7 +249,6 @@ Array [
           >
             <a
               className="small-movie-card__link"
-              href="movie-page.html"
               onClick={[Function]}
             >
               Bohemian Rhapsody
@@ -358,7 +275,6 @@ Array [
           >
             <a
               className="small-movie-card__link"
-              href="movie-page.html"
               onClick={[Function]}
             >
               keks

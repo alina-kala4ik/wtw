@@ -24,7 +24,6 @@ exports[`FilmsList render 1`] = `
     >
       <a
         className="small-movie-card__link"
-        href="movie-page.html"
         onClick={[Function]}
       >
         The Grand Budapest Hotel
@@ -51,7 +50,6 @@ exports[`FilmsList render 1`] = `
     >
       <a
         className="small-movie-card__link"
-        href="movie-page.html"
         onClick={[Function]}
       >
         Fantastic Beasts: The Crimes of Grindelwald
@@ -78,7 +76,6 @@ exports[`FilmsList render 1`] = `
     >
       <a
         className="small-movie-card__link"
-        href="movie-page.html"
         onClick={[Function]}
       >
         Bohemian Rhapsody
@@ -105,7 +102,6 @@ exports[`FilmsList render 1`] = `
     >
       <a
         className="small-movie-card__link"
-        href="movie-page.html"
         onClick={[Function]}
       >
         keks

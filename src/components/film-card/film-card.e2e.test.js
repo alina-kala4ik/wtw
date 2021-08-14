@@ -28,14 +28,14 @@ const film = {
 };
 
 it(`film card title click`, () => {
-  const handelFilmTitleClick = jest.fn();
+  const handlerFilmTitleClick = jest.fn();
   const preventDefault = jest.fn();
 
   const filmCard = Enzyme.shallow(
       <FilmCard
         film={film}
         handlerFilmCardHover={() => {}}
-        handlerFilmTitleClick={handelFilmTitleClick}
+        handlerFilmTitleClick={handlerFilmTitleClick}
       />
   );
 
@@ -44,8 +44,8 @@ it(`film card title click`, () => {
   filmTitle.simulate(`click`, {preventDefault});
 
   expect(preventDefault).toHaveBeenCalledTimes(1);
-  expect(handelFilmTitleClick).toHaveBeenCalledTimes(1);
-  expect(handelFilmTitleClick.mock.calls[0][0]).toMatchObject(film);
+  expect(handlerFilmTitleClick).toHaveBeenCalledTimes(1);
+  expect(handlerFilmTitleClick.mock.calls[0][0]).toMatchObject(film);
 });
 
 it(`change state in film card component when mouse enter on film card`, () => {
