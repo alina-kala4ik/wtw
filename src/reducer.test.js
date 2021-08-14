@@ -19,3 +19,15 @@ it(`change genre`, function () {
     allFilms: films,
   });
 });
+
+it(`show more films`, function () {
+  const foo = reducer(undefined, {
+    type: ActionTypes.SHOW_MORE_FILMS,
+    payload: 8
+  });
+  expect(foo).toMatchObject({
+    genre: `All genres`,
+    allFilms: films,
+    visibleCountOfFilms: 16
+  });
+});
