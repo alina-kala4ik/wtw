@@ -49,6 +49,11 @@ class App extends React.PureComponent {
   render() {
     const {films} = this.props;
 
+
+    if (films.length === 0) {
+      return null;
+    }
+
     return <BrowserRouter>
       <Switch>
         <Route exact path="/">

@@ -1,9 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import {createStore} from "redux";
+import {createStore, applyMiddleware, compose} from "redux";
 import {Provider} from "react-redux";
 import App from "./components/App/app.jsx";
 import {reducer} from "./reducer";
+import thunk from "redux-thunk";
+
+import {Operation} from "./reducer";
 
 const settings = {
   promotionTitle: `djndjfnkjn`,
@@ -11,7 +14,12 @@ const settings = {
   promotionReleaseDate: `2021`,
 };
 
-const store = createStore(reducer);
+const store = createStore(reducer, compose(
+    applyMiddleware(thunk),
+    window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : (f) => f
+));
+
+store.dispatch(Operation.loadFilms());
 
 const init = () => {
   ReactDOM.render(
